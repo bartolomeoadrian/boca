@@ -16,15 +16,25 @@
 	},
 	"content_scripts": [{
 		"matches": ["https://soysocio.bocajuniors.com.ar/comprar_plano_general.php*"],
-		"js": ["assets/js/comprar_plano_general.js"],
+		"js": ["assets/js/content-scripts/comprar_plano_general.js"],
 		"all_frames": false,
 		"match_origin_as_fallback": false,
 		"match_about_blank": false,
-		"run_at": "document_idle",
-		"world": "ISOLATED"
+		"run_at": "document_idle"
+	}, {
+		"matches": ["https://soysocio.bocajuniors.com.ar/comprar_plano_asiento.php*"],
+		"js": ["assets/js/content-scripts/comprar_plano_asiento.js"],
+		"all_frames": false,
+		"match_origin_as_fallback": false,
+		"match_about_blank": false,
+		"run_at": "document_idle"
 	}],
+	"background": {
+		"service_worker": "assets/js/service-worker.js"
+	},
 	"permissions": [
 		"tabs",
-		"notifications"
+		"notifications",
+		"storage"
 	]
 }

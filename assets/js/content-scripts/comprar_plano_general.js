@@ -1,12 +1,6 @@
 var refresh = localStorage.getItem("refresh") === "true" ? true : false;
-var interval = localStorage.getItem("interval") ? parseInt(localStorage.getItem("interval")) : 1;
+var interval = localStorage.getItem("interval") ? parseFloat(localStorage.getItem("interval")) : 1;
 var select = localStorage.getItem("select") === "true" ? true : false;
-
-if (localStorage.getItem("refresh") === null || localStorage.getItem("interval") === null || localStorage.getItem("select") === null) {
-	chrome.tabs.sendMessage(chrome.runtime.id, { action: "status" });
-} else {
-	start();
-}
 
 const available = () => {
 	const divMap = document.querySelector("#divMap .enabled");
@@ -24,15 +18,10 @@ const eventFire = (el, etype) => {
 }
 
 const start = () => {
+	console.log("Values: ", refresh, interval, select);
 	const availableForBooking = available();
 	if (availableForBooking) {
-		chrome.notifications.create(
-			"Se encontró un lugar disponible para reservar!", {
-			type: "basic",
-			iconUrl: "32.png",
-			title: 'Socio Boca Juniors',
-			message: 'Se encontró un lugar disponible para reservar!'
-		});
+		chrome.runtime.sendMessage({ action: "found" });
 		if (select) eventFire(availableForBooking, 'click');
 	} else {
 		if (refresh) {
@@ -49,7 +38,7 @@ const setRefresh = (value) => {
 }
 
 const setInterval = (value) => {
-	interval = value;
+	interval = parseFloat(value);
 	localStorage.setItem("interval", value);
 }
 
@@ -60,6 +49,7 @@ const setSelect = (value) => {
 
 chrome.runtime.onMessage.addListener(
 	function (request, sender, sendResponse) {
+		console.log("Request: ", request);
 		if (!request.action) return;
 		if (request.action == "status") {
 			setRefresh(request.refresh);
@@ -79,3 +69,6 @@ chrome.runtime.onMessage.addListener(
 		}
 	}
 );
+
+console.log("Asking status...");
+chrome.runtime.sendMessage({ action: "status" });

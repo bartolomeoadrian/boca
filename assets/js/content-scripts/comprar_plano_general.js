@@ -21,7 +21,6 @@ const start = () => {
 	console.log("Values: ", refresh, interval, select);
 	const availableForBooking = available();
 	if (availableForBooking) {
-		chrome.runtime.sendMessage({ action: "found" });
 		if (select) eventFire(availableForBooking, 'click');
 	} else {
 		if (refresh) {

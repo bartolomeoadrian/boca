@@ -16,10 +16,17 @@ const eventFire = (el, etype) => {
 	}
 }
 
-const reservar = () => {
+const notification = () => {
+	setTimeout(() => {
+		chrome.runtime.sendMessage({ action: "found" });
+	}, 10000);
+}
+
+const book = () => {
 	const btnReservar = document.querySelector("#btnReservar");
 	if (btnReservar) {
 		eventFire(btnReservar, 'click');
+		notification()
 	} else {
 		tryCount++;
 
@@ -34,10 +41,11 @@ const reservar = () => {
 }
 
 const start = () => {
+	if (!select) return;
 	const availableForBooking = available();
 	if (availableForBooking) {
 		eventFire(availableForBooking, 'click');
-		reservar();
+		book();
 	} else {
 		history.back();
 	}
@@ -69,7 +77,7 @@ setInterval(() => {
 	const messageWrapper = document.querySelector(".message-box-wrap");
 	if (messageWrapper) {
 		if (messageWrapper.textContent.includes("La ubicación ya no se encuentra disponible")) {
-			history.back();
+			if (select) history.back();
 		}
 	}
 }, 200);

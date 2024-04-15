@@ -1,6 +1,6 @@
 # Extensión de Chrome para comprar entradas de Boca Juniors
 
-![Logo de Boca Juniors](https://www.google.com/url?sa=i&url=https%3A%2F%2Fes.m.wikipedia.org%2Fwiki%2FArchivo%3ABoca_escudo.png&psig=AOvVaw1k7WQBgDLOAH3d_kdgv83a&ust=1713282660067000&source=images&cd=vfe&opi=89978449&ved=0CBIQjRxqFwoTCOjJzLLJxIUDFQAAAAAdAAAAABAE)
+![Logo de Boca Juniors](https://upload.wikimedia.org/wikipedia/commons/c/c9/Boca_escudo.png)
 
 Esta extensión de Chrome te permite comprar entradas para ver a Boca Juniors de manera rápida y sencilla. Con solo unos clics, podrás asegurarte un lugar en los partidos más emocionantes del equipo.
 

@@ -1,0 +1,29 @@
+{
+	"name": "Aguante Bocaaa Bocaaaa",
+	"icons": {
+		"16": "assets/img/boca.png",
+		"32": "assets/img/boca.png",
+		"48": "assets/img/boca.png",
+		"128": "assets/img/boca.png"
+	},
+	"version": "1.0.0",
+	"description": "A ver si encontramos lugaaar para ver a Bocaaaaa",
+	"manifest_version": 3,
+	"author": "Platino 2",
+	"action": {
+		"default_popup": "index.html",
+		"default_title": "Aguante Boca"
+	},
+	"content_scripts": [{
+		"matches": ["https://soysocio.bocajuniors.com.ar/comprar_plano_general.php*"],
+		"js": ["assets/js/comprar_plano_general.js"],
+		"all_frames": false,
+		"match_origin_as_fallback": false,
+		"match_about_blank": false,
+		"run_at": "document_idle",
+		"world": "ISOLATED"
+	}],
+	"permissions": [
+		"tabs"
+	]
+}

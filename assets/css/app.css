@@ -1,0 +1,45 @@
+* {
+	margin: 0;
+	padding: 0;
+	box-sizing: border-box;
+}
+
+#app {
+	background-color: #023f86;
+	padding: 20px;
+	text-align: center;
+}
+
+#app>img {
+	height: 80px;
+}
+
+#app>h1, #app>h2 {
+	color: #fe9f0c;
+}
+
+#app>hr {
+	margin: 20px 0px;
+}
+
+#app>.input-wrapper {
+	margin: 20px 0px;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	gap: 10px;
+	white-space: nowrap;
+	overflow: hidden;
+}
+
+#app>.input-wrapper>label {
+	color: #fe9f0c;
+	font-size: 20px;
+	margin: 0px;
+	line-height: 1;
+}
+
+#app>.input-wrapper>input{
+	width: 50px;
+	font-size: 20px;
+}

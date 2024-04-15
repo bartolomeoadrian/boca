@@ -1,11 +1,9 @@
-var port = chrome.runtime.connect({ name: "boca" });
-
 var refresh = localStorage.getItem("refresh") === "true" ? true : false;
 var interval = localStorage.getItem("interval") ? parseInt(localStorage.getItem("interval")) : 1;
 var select = localStorage.getItem("select") === "true" ? true : false;
 
 if (localStorage.getItem("refresh") === null || localStorage.getItem("interval") === null || localStorage.getItem("select") === null) {
-	port.postMessage({ action: "status" });
+	chrome.tabs.sendMessage(chrome.runtime.id, { action: "status" });
 } else {
 	start();
 }
@@ -38,28 +36,39 @@ const start = () => {
 	}
 }
 
-port.onMessage.addListener(function (request) {
-	if (!request.action) return;
-	if (request.action == "status") {
-		refresh = request.refresh;
-		localStorage.setItem("refresh", refresh);
-		interval = request.interval;
-		localStorage.setItem("interval", interval);
-		select = request.select;
-		localStorage.setItem("select", select);
-		start();
+const setRefresh = (value) => {
+	refresh = value;
+	localStorage.setItem("refresh", value);
+}
+
+const setInterval = (value) => {
+	interval = value;
+	localStorage.setItem("interval", value);
+}
+
+const setSelect = (value) => {
+	select = value;
+	localStorage.setItem("select", value);
+}
+
+chrome.runtime.onMessage.addListener(
+	function (request, sender, sendResponse) {
+		if (!request.action) return;
+		if (request.action == "status") {
+			setRefresh(request.refresh);
+			setInterval(request.interval);
+			setSelect(request.select);
+			start();
+		}
+		if (request.action == "refresh") {
+			setRefresh(request.value);
+			location.reload();
+		}
+		if (request.action == "interval") {
+			setInterval(request.value);
+		}
+		if (request.action == "select") {
+			setSelect(request.value);
+		}
 	}
-	if (request.action == "refresh") {
-		refresh = request.value;
-		localStorage.setItem("refresh", refresh);
-		location.reload();
-	}
-	if (request.action == "interval") {
-		interval = request.value;
-		localStorage.setItem("interval", interval);
-	}
-	if (request.action == "select") {
-		select = request.value;
-		localStorage.setItem("select", select);
-	}
-});
+);

@@ -24,6 +24,7 @@
 		"world": "ISOLATED"
 	}],
 	"permissions": [
-		"tabs"
+		"tabs",
+		"notifications"
 	]
 }

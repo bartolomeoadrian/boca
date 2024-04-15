@@ -26,6 +26,13 @@ const eventFire = (el, etype) => {
 const start = () => {
 	const availableForBooking = available();
 	if (availableForBooking) {
+		chrome.notifications.create(
+			"Se encontró un lugar disponible para reservar!", {
+			type: "basic",
+			iconUrl: "32.png",
+			title: 'Socio Boca Juniors',
+			message: 'Se encontró un lugar disponible para reservar!'
+		});
 		if (select) eventFire(availableForBooking, 'click');
 	} else {
 		if (refresh) {

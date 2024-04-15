@@ -28,6 +28,13 @@
 		"match_origin_as_fallback": false,
 		"match_about_blank": false,
 		"run_at": "document_idle"
+	}, {
+		"matches": ["https://soysocio.bocajuniors.com.ar/comprar_producto_pedido.php*"],
+		"js": ["assets/js/content-scripts/comprar_producto_pedido.js"],
+		"all_frames": false,
+		"match_origin_as_fallback": false,
+		"match_about_blank": false,
+		"run_at": "document_idle"
 	}],
 	"background": {
 		"service_worker": "assets/js/service-worker.js"

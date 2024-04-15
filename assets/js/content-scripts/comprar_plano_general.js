@@ -51,12 +51,6 @@ chrome.runtime.onMessage.addListener(
 	function (request, sender, sendResponse) {
 		console.log("Request: ", request);
 		if (!request.action) return;
-		if (request.action == "status") {
-			setRefresh(request.refresh);
-			setInterval(request.interval);
-			setSelect(request.select);
-			start();
-		}
 		if (request.action == "refresh") {
 			setRefresh(request.value);
 			location.reload();
@@ -71,4 +65,9 @@ chrome.runtime.onMessage.addListener(
 );
 
 console.log("Asking status...");
-chrome.runtime.sendMessage({ action: "status" });
+chrome.runtime.sendMessage({ action: "status" }, response => {
+	setRefresh(response.refresh);
+	setInterval(response.interval);
+	setSelect(response.select);
+	start();
+});

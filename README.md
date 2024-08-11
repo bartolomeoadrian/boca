@@ -25,10 +25,6 @@ Esta extensión de Chrome te permite comprar entradas para ver a Boca Juniors de
 
 Si deseas contribuir a esta extensión, siéntete libre de hacerlo. Puedes abrir un problema o enviar una solicitud de extracción en [este repositorio](https://github.com/bartolomeoadrian/boca).
 
-## Licencia
-
-Esta extensión se distribuye bajo la licencia [MIT](https://es.wikipedia.org/wiki/Licencia_MIT). Siéntete libre de utilizar, modificar y distribuir este software de acuerdo con los términos de la licencia.
-
 ## Contacto
 
 Si tienes alguna pregunta o sugerencia, no dudes en ponerte en contacto con nosotros en [bartolomeoadriangonzalez@gmail.com](mailto:bartolomeoadriangonzalez@gmail.com).

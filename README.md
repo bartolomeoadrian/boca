@@ -1,5 +1,5 @@
 <p align="center">
-  <img src="[https://app.hcdn.gob.ar/assets/img/logo-hcdn.png](https://upload.wikimedia.org/wikipedia/commons/c/c9/Boca_escudo.png)" height="100px" alt="Logo de Boca Juniors"/>
+  <img src="https://upload.wikimedia.org/wikipedia/commons/c/c9/Boca_escudo.png" height="100px" alt="Logo de Boca Juniors"/>
 </p>
 
 # Extensión de Chrome para comprar entradas de Boca Juniors
